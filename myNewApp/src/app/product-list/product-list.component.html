@@ -1,0 +1,27 @@
+    <div style="background-color: cornsilk;">
+      <div>
+        <ul>
+            <li *ngFor="let category of categories">
+                <a [routerLink] = "[category]" [queryParams]="{queryParams_categories:category}" >{{category}}</a>
+            </li>
+        </ul>
+    </div>
+
+    <router-outlet></router-outlet>
+
+
+    <p>product-list works!</p>
+<table >
+    <tbody>
+    <tr *ngFor = "let c of colorDetails" >
+    <td>
+        {{c.color}}
+    </td>
+    <td>
+        {{c.value}}
+    </td>
+
+  </tr>
+</tbody>
+</table>
+</div>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style></style>
+  </head>
+  <body>
+    <button (click)="Login()">Login</button>
+    <button (click)="Logoff()">LogOff</button>
+    <ng-container *ngIf="isvaliduser; then login; else logout"> </ng-container>
+
+    <ng-template #login>
+      <h1>Logged in !This is app Parent Component {{ title }}</h1>
+      <div class="topnav">
+
+        <a [routerLink]="'/product'">Product-list</a>
+        <a [routerLink]="'/login'">Course-list</a>
+
+      </div>
+
+      <div style="padding-left: 16px">
+        <b [hidden]="hide">{{ getcourse() }}</b>
+        <button (click)="toogle()">Toggle course</button>
+        <ul>
+          <li *ngFor="let a of menu">
+            {{ a.color }} {{ a.type }} {{ a.capacity }}
+          </li>
+        </ul>
+      </div>
+
+      <router-outlet></router-outlet>
+
+    </ng-template>
+
+    <ng-template #logout>
+      <h1>Not valid user, plz sign up</h1>
+    </ng-template>
+
+
+
+  </body>
+</html>
+
