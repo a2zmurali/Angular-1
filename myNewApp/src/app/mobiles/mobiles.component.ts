@@ -24,7 +24,7 @@ export class MobilesComponent implements OnInit{
 
   addItem(){
     const data = this.obj.getData();
-    console.log(this.data);
+    //console.log(this.data);
 
   }
 }
