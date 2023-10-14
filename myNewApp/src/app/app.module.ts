@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { MobilesComponent } from './mobiles/mobiles.component';
 import { LaptopsComponent } from './laptops/laptops.component';
 import { FurnituresComponent } from './furnitures/furnitures.component';
+import { MobilesDetailsComponent } from './mobiles-details/mobiles-details.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FurnituresComponent } from './furnitures/furnitures.component';
     LoginComponent,
     MobilesComponent,
     LaptopsComponent,
-    FurnituresComponent
+    FurnituresComponent,
+    MobilesDetailsComponent
 
   ],
   imports: [

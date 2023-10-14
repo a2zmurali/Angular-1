@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MobilesComponent } from './mobiles/mobiles.component';
 import { LaptopsComponent } from './laptops/laptops.component';
 import { FurnituresComponent } from './furnitures/furnitures.component';
+import { MobilesDetailsComponent } from './mobiles-details/mobiles-details.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: 'Mobiles', component: MobilesComponent },
       { path: 'Furnitures', component: FurnituresComponent },
       { path: 'Laptops', component: LaptopsComponent },
+      { path: 'mobiles-details/:id',component:MobilesDetailsComponent}
     ]
   },
   { path: 'login', component: LoginComponent },

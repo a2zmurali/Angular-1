@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -8,14 +8,21 @@ import { Observable } from 'rxjs';
 export class DataService {
 
 
-  private url= "http://localhost:3000/"
+  private url= "http://localhost:3000"
   constructor(private http:HttpClient) { }
 
   getData(){
     return "data";
   }
 
-  getProducts():Observable<any[]>{
-    return this.http.get<any[]>(this.url)
+ /* getProducts():Observable<any[]>{
+    return this.http.get<any[]>(`${this.url}/products`)
+  } */
+
+getProducts(category:string):Observable<any[]>{
+
+  const parameter = new HttpParams().set("category",category);
+
+    return this.http.get<any[]>(`${this.url}/products`,{'params':parameter})
   }
 }
