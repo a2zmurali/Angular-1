@@ -21,6 +21,28 @@ export class AppComponent {
     this.hide = true;
     this.title = 'myNewApp';
 
+  //  Observable
+
+  /*
+    const test$ = new Observable((subscriber) => {
+      console.log('subscriber start');
+      subscriber.next('1');
+      subscriber.next('11');
+      subscriber.complete();
+      subscriber.next('111');
+    });
+
+    test$.subscribe(
+      x => {console.log('subscribe nxt value', x)},
+      error =>  {console.log('Error');},
+      complete =>  {console.log('complete');}
+    );
+
+    */
+
+   // Observable
+
+
   }
 
   toogle(){
