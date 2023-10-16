@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-signup',
@@ -7,6 +8,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
+
+user:User;
 
   submitted = false;
 
@@ -25,6 +28,9 @@ export class SignupComponent {
     this.submitted = true;
     if (this.RegisterationForm.valid) {
       console.table(this.RegisterationForm.value);
+      const { firstName, lastName, email, password } = this.RegisterationForm.value;
+      const userToAdd = new User(firstName, lastName, email, password);
+
     }
 
   }
