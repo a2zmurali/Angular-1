@@ -11,6 +11,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     LaptopsComponent,
     MobileDetailComponent,
     LoginFormComponent,
-    SignupComponent
+    SignupComponent,
+    ParentComponent,
+    ChildComponent
   ],
   imports: [
     BrowserModule,

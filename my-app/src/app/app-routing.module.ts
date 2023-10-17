@@ -6,6 +6,7 @@ import { LaptopsComponent } from './laptops/laptops.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { MobileDetailComponent } from './mobile-detail/mobile-detail.component';
 import { SignupComponent } from './signup/signup.component';
+import { ParentComponent } from './parent/parent.component';
 
 const routes: Routes = [
   {path:'products', component:ProductListComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
     {path:'mobile-detail/:id',component:MobileDetailComponent},
   {path: 'login', component: LoginFormComponent},
   {path: 'Signup', component: SignupComponent},
+  {path:'parent',component:ParentComponent}
 
 ];
 
