@@ -34,4 +34,9 @@ getProducts(category:string):Observable<Product[]>{
     return "data";
   }
 
+  updateProduct(product:Product):Observable<Product>{
+    return this.http.put<Product>(this.url + '/products', product);
+  }
+
+
 }

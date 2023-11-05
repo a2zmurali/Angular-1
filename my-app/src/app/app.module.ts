@@ -13,6 +13,8 @@ import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { ChildComponent } from './child/child.component';
     LoginFormComponent,
     SignupComponent,
     ParentComponent,
-    ChildComponent
+    ChildComponent,
+    PageNotFoundComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

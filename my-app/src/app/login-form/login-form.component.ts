@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
+import { SharedDataService } from '../services/shared-data.service';
 
 @Component({
   selector: 'app-login-form',
@@ -13,7 +14,9 @@ export class LoginFormComponent {
   user:User = {email:'', password:''};
 
 
-  constructor(private userService: UserService,private router:Router,){}
+  constructor(private userService: UserService,
+    private sharedDataService:SharedDataService,
+    private router:Router,){}
 
   onSubmit(){
     alert(this.user.email);
@@ -21,6 +24,7 @@ export class LoginFormComponent {
       next:(response:any)=>{
         if(response.token){
           alert(response.message);
+          this.sharedDataService.LoggedIn(true);
           this.userService.setToken(response.token);
           this.router.navigate(['/products']);
         }

@@ -68,6 +68,7 @@ const products = [
   { id: 4, name: 'Product 4', category: 'Furnitures' },
 ];
 
+/*
 //Middleware for authentication
 app.use((req, res, next) => {
   const token = req.header('Authorization');  
@@ -81,6 +82,8 @@ app.use((req, res, next) => {
     res.status(400).send({message:'Invalid Token'});
   }  
 }) 
+*/
+
 
 
 // Route to get products by category
@@ -99,6 +102,35 @@ app.get('/products', (req, res) => {
     res.status(200).json(filteredProducts);
   }
 });
+
+app.post('/product', (req,res) => {
+  const newProduct = req.body;  
+  products.push(newProduct);
+  return res.status(201).json(newProduct);
+});
+
+
+app.put('/products', (req,res) => {
+  const productId = parseInt(req.body.id,10);
+
+  const productToUpdate = products.find((product) => product.id ===productId);
+
+  if(!productToUpdate){
+    return res.status(404).json({error:'Product Not Found'});
+  }
+  if(req.body.name){
+    productToUpdate.name = req.body.name;
+  }
+
+  if(req.body.description){
+    productToUpdate.description = req.body.description;
+  }
+  return res.json({message: 'Product updated successfully', product:productToUpdate});
+
+})
+
+
+
 
 // Start the server
 app.listen(port, () => {

@@ -11,12 +11,13 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-        <li class="nav-item">
+      <!--  <li class="nav-item">
           <a class="nav-link " aria-current="page"[routerLink] = "'/login'">Login</a>
         </li>
         <li class="nav-item">
           <a class="nav-link " aria-current="page"[routerLink] = "'/Signup'">Sign Up</a>
         </li>
+        -->
 
         <li class="nav-item">
           <a class="nav-link " aria-current="page"[routerLink] = "'/parent'">Parent-Child</a>
@@ -38,6 +39,15 @@
           </ul>
         </li>
       </ul>
+      <ul class="navbar-nav ml-md-auto d-flex flex-row">
+        <li class="nav-item">
+          <a *ngIf="isLoggedOut" class="btn btn-primary " aria-current="page"[routerLink] = "'/login'">Login</a>
+        <button *ngIf = "isLoggedIn" (click)="logout()"  class="btn btn-primary">Logout</button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page"[routerLink] = "'/Signup'">Sign Up</a>
+        </li>
+    </ul>
     </div>
   </div>
 </nav>

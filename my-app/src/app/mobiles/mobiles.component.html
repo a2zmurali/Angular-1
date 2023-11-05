@@ -15,9 +15,17 @@
             <td>{{product.name}}</td>
             <td>{{product.description}}</td>
             <td>
-                <a [routerLink] = "['../mobile-detail',product.id]">View</a>
+              <button class="btn btn-primary" (click) = "showEdit(product)">Edit</button>
+                <a class="btn btn-primary" [routerLink] = "['../mobile-detail',product.id]">View</a>
             </td>
         </tr>
     </tbody>
 </table>
+
+<div *ngIf="showEditProduct">
+  <h3>Details</h3>
+  <!--Send data to edit product-->
+  <app-edit-product [product] = "selectedproduct" (productChange) = update($event)></app-edit-product>
+</div>
+
 
