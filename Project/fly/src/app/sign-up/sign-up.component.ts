@@ -1,6 +1,9 @@
+import { Router } from '@angular/router';
+
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { User } from '../_models/user.model';
+import { UserService } from '../_services/user.service';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -11,6 +14,7 @@ export class SignUpComponent {
   user!:User;
 
   submitted = false;
+  constructor(private userservice:UserService , private router:Router) { }
 
   //Formgropu obj creation
   RegisterationForm = new FormGroup({
@@ -30,8 +34,20 @@ export class SignUpComponent {
     console.table(this.RegisterationForm.value);
     const { firstName, lastName, email, password } = this.RegisterationForm.value;
     const userToAdd = new User(firstName, lastName, email, password);
+    // call User service
 
+    this.userservice.createNewUser(userToAdd)
+    .subscribe(
+      {
+        next:(response:any)=>{
+        alert(response.message),
+        this.router.navigate(['/home']);
+        },
+        error: (err:any) =>alert(err)
+      }
+    )
   }
+
 
 
 }

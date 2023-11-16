@@ -1,6 +1,10 @@
+
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken'); // for Jst toekn
+
 const fs = require('fs');
 
 const Flight = require('./Models/flightModel');
@@ -9,6 +13,8 @@ const FlightManager = require('./Models/FlightManager')
 const Booking = require('./Models/Booking');
 const User = require('./Models/User');
 const app = express();
+const port = 3000; // You can change this to any port you prefer
+const secretkey = '5656232389745132389';
 
 app.use(cors());
 
@@ -16,13 +22,29 @@ app.use(bodyParser.json());
 
 //login
 
-const users = [];
-app.post('/createUser', (req,res) =>{
-  const { firstName, lastName, email, password} = req.body;
 
+const users= [];
+
+
+
+app.post('/createUser', (req,res) =>{
+  const { _firstName, _lastName, _email, _password} = req.body;
+ 
   //create a new user with the provided data
-  const newuser = new User(firstName,lastName, email, password);
+  const new_user = {
+    firstName: _firstName,
+    lastName: _lastName,
+    email: _email,
+    password: _password
+ };
+ //  Push 
+ users.push(new_user);
+
+  /*
+  const newuser = new User(_firstName,_lastName, _email, _password);
   users.push(newuser);
+  */
+
   res.status(200).json({message: 'User Regitered successfully'});
 
 
@@ -60,6 +82,15 @@ app.post('/login', (req,res) => {
     res.status(400).send({message:'Invalid Token'});
   }  
 }) */
+
+// Route to get products by category
+app.get('/getUsers', (req, res) => {
+  console.log('get');
+  
+    // If there are matching products, respond with a 200 OK status code
+    res.status(200).json(users);
+
+});
 
 
 
@@ -115,7 +146,7 @@ app.post('/flights', (req, res) => {
 
   })
   
-  const port = process.env.PORT || 3000;
+
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
